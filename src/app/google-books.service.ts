@@ -9,7 +9,6 @@ import { Book } from './book';
 })
 export class GoogleBooksService {
   private searchUrl = 'https://www.googleapis.com/books/v1/volumes';
-  private apiKey = 'AIzaSyBPyZo58J6vqAj-eTjPK_SHGLYjVspOueY';
   constructor(private http: HttpClient) { }
 
   getBooks(q: string) {
