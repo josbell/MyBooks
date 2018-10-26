@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'My Books';
   links = [
-    { label: 'Dashboad', path: '/dashboard' },
-    { label: 'Book List', path: '/book-list' }
+    { label: 'Search', path: '/dashboard' },
+    { label: 'Have Read', path: '/book-list' },
+    { label: 'To Read', path: '/book-list' },
+    { label: 'Top Five', path: '/book-list' }
   ];
   activeLink = this.links[0];
 }

@@ -1,16 +1,20 @@
-/* HeroesComponent's private CSS styles */
-.books {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
+button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
 }
 
+.books {
+  /* margin: 0 0 2em 0; */
+  list-style-type: none;
+  /* padding: 0; */
+  /* width: 15em; */
+}
 
 .books li {
-  position: relative;
-  cursor: pointer;
-  background-color: #EEE;
+  /* position: relative; */
+  /* cursor: pointer; */
+  /* background-color: #EEE; */
   margin: .5em;
   padding: .3em 0;
   /* height: 1.6em; */
@@ -18,7 +22,7 @@
 }
 
 .books li:hover {
-  color: #607D8B;
+  /* color: #607D8B; */
   background-color: #DDD;
   left: .1em;
 } 

@@ -18,6 +18,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AngularFireModule } from '@angular/fire';
@@ -50,6 +54,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
     MatTabsModule,
     MatCardModule,
     MatGridListModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,

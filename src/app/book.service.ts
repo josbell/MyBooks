@@ -12,27 +12,22 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BookService {
-  private booksUrl = 'api/books';  // URL to web api
-  private books: Book[] = [];
   public books$: Observable<Book[]>;
 
 
   constructor(private http: HttpClient,
     private db: AngularFireDatabase) {
       this.books$ = this.db.list<Book>('books').valueChanges();
-      // this.books$ = db.object<Book[]>('books').valueChanges();
-    // for (let index = 1; index < 5; index++) {
-    //   this.books.push(new Book(index, 'Book Name Test ' + index));
-    // }
+      this.books$.subscribe(data => console.log(data));
   }
 
   add(book: Book) {
     return this.db.list('books').push(book);
   }
 
-  // getBooks(): void {
-    
-  // }
+  remove(book: Book) {
+
+  }
 
   bookExists(id): Promise<firebase.database.DataSnapshot> {
     console.log(id);
@@ -40,7 +35,6 @@ export class BookService {
       .orderByChild('id').equalTo(id).once('value');
   }
 
-  /** GET hero by id. Will 404 if id not found */
   getBook(bookID): AngularFireObject<Book> {
     return this.db.object(`books/${bookID}`);
     // return of(this.books.find(b => b.id === bookID));
@@ -52,9 +46,7 @@ export class BookService {
     //   );
   }
 
-  delete(book: Book): Observable<Book> {
-    this.books = this.books.filter(b => b.id !== book.id);
-    return of(book);
+  delete(book: Book) {
     // const id = typeof book === 'number' ? book : book.id;
     // const url = `${this.booksUrl}/${id}`;
 
@@ -80,7 +72,6 @@ export class BookService {
       // this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
     };
   }
 }
