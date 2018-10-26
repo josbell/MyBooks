@@ -39,5 +39,4 @@ testem.log
 Thumbs.db
 
 # Sensitive Data
-/environment.ts
-/environment.prod.ts
+/src/environments
