@@ -10,16 +10,18 @@ import { Component, OnInit } from '@angular/core';
 export class BookListComponent implements OnInit {
   books: Book[];
 
-  constructor(private bookService: BookService) { }
+  constructor(public bookService: BookService) {
+
+  }
 
   ngOnInit() {
-    this.getBooks();
+    // this.getBooks();
   }
 
-  getBooks(): void {
-    this.bookService.getBooks()
-      .subscribe(books => this.books = books);
-  }
+  // getBooks(): void {
+  //   this.bookService.getBooks()
+  //     .subscribe(books => this.books = books);
+  // }
 
   delete(book: Book): void {
     this.books = this.books.filter(b => b.id !== book.id);

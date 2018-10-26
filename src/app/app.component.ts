@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'My Books';
+  links = [
+    { label: 'Dashboad', path: '/dashboard' },
+    { label: 'Book List', path: '/book-list' }
+  ];
+  activeLink = this.links[0];
 }

@@ -1,0 +1,14 @@
+.card {
+  max-width: 400px;
+  margin-right: 10px;
+}
+.left {
+    float: left;
+}
+.card-description {
+    overflow:hidden
+}
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

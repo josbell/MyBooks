@@ -1,12 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/book-list">Book List</a>
-</nav>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">{{ title }}</mat-toolbar>
+<div>
+  <div fxFlexOffset.gt-sm="15%" fxFlex.gt-sm="70%">
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+        {{link.label}}
+      </a>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
 
+</div>

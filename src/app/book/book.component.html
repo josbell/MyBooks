@@ -1,4 +1,5 @@
 <a routerLink="/detail/{{book.id}}">
-  <span class="badge">{{book.id}}</span> {{book.name}}
+  <!-- <img src="{{book.imageLink.smallThumbnail}}"> -->
+  <mat-card>{{book.title}}</mat-card>
 </a>
-<button class="delete" (click)="onDeleteClick($event)">x</button>
+<!-- <button class="delete" (click)="onDeleteClick($event)">x</button> -->

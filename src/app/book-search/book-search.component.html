@@ -1,3 +1,12 @@
-<p>
-  book-search works!
-</p>
+<ng-select  [items]="books$ | async"
+            bindLabel="title"
+            bindValue="id"
+            [hideSelected]="true"
+            [loading]="loading"
+            [typeahead]="booksInput$"
+            (change)="onChange($event)">
+            <ng-template ng-option-tmp let-item="item">
+                <img *ngIf="item.imageLink.smallThumbnail" height="15" width="15" [src]="item.imageLink.smallThumbnail" />
+                {{item.title}} by {{item.authors[0]}}
+            </ng-template>
+</ng-select>
