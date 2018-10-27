@@ -21,6 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
@@ -57,6 +58,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
     MatButtonModule,
     MatListModule,
     MatIconModule,
+    MatTooltipModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,

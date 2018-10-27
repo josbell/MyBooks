@@ -9,9 +9,7 @@ export class AppComponent {
   title = 'My Books';
   links = [
     { label: 'Search', path: '/dashboard' },
-    { label: 'Have Read', path: '/book-list' },
-    { label: 'To Read', path: '/book-list' },
-    { label: 'Top Five', path: '/book-list' }
+    { label: 'Have Read', path: '/book-list' }
   ];
   activeLink = this.links[0];
 }

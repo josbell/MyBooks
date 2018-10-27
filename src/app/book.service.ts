@@ -1,77 +1,55 @@
 import { Injectable } from '@angular/core';
 import { Book } from './book';
-import { of, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { of, Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { tap, map, catchError, filter } from 'rxjs/operators';
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { asObservable } from './asObservable';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
   public books$: Observable<Book[]>;
-
+  public booksRef: AngularFireList<any>;
+  private store: BehaviorSubject<Book[]> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient,
     private db: AngularFireDatabase) {
-      this.books$ = this.db.list<Book>('books').valueChanges();
-      this.books$.subscribe(data => console.log(data));
+    this.booksRef = this.db.list('books');
+    this.booksRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => {
+          const book = new Book({ ...c.payload.val() });
+          book.key = c.payload.key;
+          return book;
+        })
+      )
+    ).subscribe(books => this.store.next(books));
+  }
+
+  get books(): Observable<Book[]> {
+    return asObservable(this.store);
+  }
+
+  getLoadedBook(id): Observable<Book> {
+    return this.books.pipe(
+      map(bks => bks.find(b => b.id === id))
+    );
   }
 
   add(book: Book) {
-    return this.db.list('books').push(book);
+    return this.booksRef.push(book);
   }
 
-  remove(book: Book) {
-
+  delete(key: string) {
+    this.booksRef.remove(key);
   }
 
   bookExists(id): Promise<firebase.database.DataSnapshot> {
-    console.log(id);
     return this.db.database.ref(`books`)
       .orderByChild('id').equalTo(id).once('value');
   }
 
-  getBook(bookID): AngularFireObject<Book> {
-    return this.db.object(`books/${bookID}`);
-    // return of(this.books.find(b => b.id === bookID));
-    // const url = `${this.booksUrl}/?id=${bookID}`;
-    // return this.http.get<Book>(url)
-    //   .pipe(
-    //     tap(_ => console.log(`fetched book id=${bookID}`)),
-    //     catchError(this.handleError<Book>(`getBook id=${bookID}`))
-    //   );
-  }
-
-  delete(book: Book) {
-    // const id = typeof book === 'number' ? book : book.id;
-    // const url = `${this.booksUrl}/${id}`;
-
-    // return this.http.delete<Book>(url, httpOptions).pipe(
-    //   tap(_ => console.log(`deleted book id=${id}`)),
-    //   catchError(this.handleError<Book>('deleteBook'))
-    // );
-  }
-
-  /**
- * Handle Http operation that failed.
- * Let the app continue.
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      // this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-    };
-  }
 }

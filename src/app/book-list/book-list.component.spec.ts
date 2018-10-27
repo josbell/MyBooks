@@ -30,7 +30,7 @@ describe('BookListComponent', () => {
     beforeEach(() => {
         BOOKS = [];
         for (let index = 1; index < 5; index++) {
-            BOOKS.push(new Book(index, 'Book Name Test ' + index));
+            BOOKS.push(new Book(index,'', 'Book Name Test ' + index));
         }
         mockBookService = jasmine.createSpyObj(['getBooks', 'delete']);
         mockBookService.getBooks.and.returnValue(of(BOOKS));

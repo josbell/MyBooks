@@ -1,8 +1,10 @@
-<ul class="books">
-  <li *ngFor="let book of bookService.books$ | async">
-    <app-book (delete)='delete(book)' [book]='book'></app-book>
-  </li>
-</ul>
-<button mat-fab>
-  <mat-icon>add</mat-icon>
-</button>
+<div class="container" fxLayout="column" fxLayoutAlign="space-around stretch" >
+  <ul class="books">
+    <li *ngFor="let book of bookService.books | async">
+      <app-book (delete)='delete(book)' [book]='book'></app-book>
+    </li>
+  </ul>
+  <button mat-fab (click)="onAdd()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

@@ -22,8 +22,6 @@ export class BookSearchComponent implements OnInit {
   }
 
   onChange(book: Book) {
-    // Navigate to Book Details
-    console.log(book);
     this.router.navigate(['/detail', book.id]);
   }
 

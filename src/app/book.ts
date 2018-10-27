@@ -1,12 +1,17 @@
+import * as _ from 'lodash';
+
 export class Book {
-    constructor(
-        public id: string,
-        public title: string,
-        public authors: string[] = [],
-        public categories: string[] = [],
-        public description: string = '',
-        public imageLink: any = {},
-        public notes: string[] = [],
-        public tags: string[] = []
-    ) { }
+    public key  = '';
+    public id  = '';
+    public title  = '';
+    public authors = '';
+    public categories: string[] = [];
+    public description  = '';
+    public imageLinks: any = {};
+    public notes: string[] = [];
+    public tags: string[] = [];
+
+    constructor(obj: Object = {}) {
+        _.assign(this, _.pick(obj, _.keys(this)));
+    }
 }

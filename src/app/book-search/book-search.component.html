@@ -10,8 +10,8 @@
                 [typeahead]="booksInput$"
                 (change)="onChange($event)">
                 <ng-template ng-option-tmp let-item="item">
-                    <img *ngIf="item.imageLink.smallThumbnail" height="15" width="15" [src]="item.imageLink.smallThumbnail" />
-                    {{item.title}} by {{item.authors[0]}}
+                    <img *ngIf="item.imageLinks.smallThumbnail" height="15" width="15" [src]="item.imageLinks.smallThumbnail" />
+                    {{item.title}} <span *ngIf="item.authors">by {{item.authors}}</span>
                 </ng-template>
     </ng-select>
 </div>

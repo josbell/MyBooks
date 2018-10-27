@@ -17,7 +17,6 @@ export class BookComponent implements OnInit {
   }
 
   onDeleteClick(): void {
-    // $event.stopPropagation();
     this.delete.emit('');
   }
 

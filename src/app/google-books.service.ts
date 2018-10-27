@@ -11,33 +11,24 @@ export class GoogleBooksService {
   private searchUrl = 'https://www.googleapis.com/books/v1/volumes';
   constructor(private http: HttpClient) { }
 
-  getBooks(q: string) {
-    return this.http.get<Book[]>(`${this.searchUrl}?q=${q}&projection=full`)
+  getBooks(q: string): Observable<Book[]> {
+    if (!q) { return of([]); }
+    return this.http.get<any[]>(`${this.searchUrl}?q=${q}&projection=full`)
       .pipe(
         tap(data => console.log(`fetched data`, data['items'])),
-        map(data => data['items'].map(item => this.createBook(item))),
+        map(data => data['items'].map(item => new Book({id: item.id, ...item.volumeInfo}))),
         tap(books => console.log(`fetched books`, books)),
         catchError(this.handleError(`getBooks`, []))
       );
   }
 
   getBook(id): Observable<Book> {
-     return this.http.get<Book>(`${this.searchUrl}/${id}`)
+     return this.http.get<any>(`${this.searchUrl}/${id}`)
       .pipe(
         tap(data => console.log(`fetched data`, data)),
-        map(item => this.createBook(item)),
+        map(item => new Book({id: item.id, ...item.volumeInfo})),
         catchError(this.handleError<Book>(`getBooks id=${id}` ))
       );
-  }
-
-  createBook(item): Book {
-    return new Book(
-      item.id,
-      item.volumeInfo.title,
-      item.volumeInfo.authors,
-      item.volumeInfo.categories,
-      item.volumeInfo.description,
-      item.volumeInfo.imageLinks);
   }
 
   /**

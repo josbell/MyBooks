@@ -23,35 +23,21 @@ export class BookDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.bookService.bookExists(id)
-      .then((snapshot) => {
-        console.log(snapshot);
-        if (snapshot.exists()) {
-          console.log(snapshot.val);
+    this.bookService.getLoadedBook(id)
+      .subscribe(book => {
+        if (book) {
+          this.book = book;
           this.inList = true;
         }
-      }, (error) => {
-        console.log(error);
-        this.inList = false;
       });
-    // this.getBookFromLocal(id);
-    this.getBookInfo(id);
-  }
-
-  getBookInfo(id): void {
     this.gbService.getBook(id)
-      .subscribe(book => this.book = book);
+      .subscribe(gbook => this.book = this.inList ? this.book : gbook);
   }
 
   add() {
     this.bookService.add(this.book)
       .then(_ => this.inList = true);
   }
-
-  // getBookFromLocal(id) {
-  //   this.bookService.getBook(id)
-  //     .subscribe(book => this.book = book);
-  // }
 
   goBack(): void {
     this.location.back();
