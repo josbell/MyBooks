@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { BookService } from './book.service';
-import { Book } from './book';
+import { Book } from '../core/book';
 
 describe('BookService', () => {
   let httpTestingController: HttpTestingController;

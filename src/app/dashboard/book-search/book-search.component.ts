@@ -1,5 +1,5 @@
-import { GoogleBooksService } from './../google-books.service';
-import { Book } from './../book';
+import { GoogleBooksService } from '../../core/google-books.service';
+import { Book } from '../../core/book';
 import { Component, OnInit } from '@angular/core';
 import { Subject, concat, Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap, switchMap, catchError } from 'rxjs/operators';

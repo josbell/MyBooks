@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookDetailComponent } from './book-detail.component';
-import { Book } from '../book';
+import { Book } from '../../core/book';
 import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

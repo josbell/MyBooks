@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { BookComponent } from './book.component';
 import { By } from '@angular/platform-browser';
-import { Book } from '../book';
+import { Book } from '../../core/book';
 
 describe('BookComponent', () => {
   let component: BookComponent;

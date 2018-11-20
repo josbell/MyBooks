@@ -2,7 +2,7 @@ import { By } from '@angular/platform-browser';
 import { BookComponent } from './../book/book.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BookListComponent } from './book-list.component';
-import { Book } from '../book';
+import { Book } from '../../core/book';
 import { BookService } from '../book.service';
 import { of } from 'rxjs';
 import { Directive, Input, NO_ERRORS_SCHEMA } from '@angular/core';

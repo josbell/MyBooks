@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Book } from './book';
+import { Book } from '../core/book';
 import { of, Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { tap, map, catchError, filter } from 'rxjs/operators';
-import { asObservable } from './asObservable';
+import { asObservable } from '../asObservable';
 import * as _ from 'lodash';
 
 @Injectable({

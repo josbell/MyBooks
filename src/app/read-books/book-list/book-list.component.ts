@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { BookService } from './../book.service';
-import { Book } from './../book';
+import { Book } from './../../core/book';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
-  books: Book[];
 
   constructor(
     public bookService: BookService,

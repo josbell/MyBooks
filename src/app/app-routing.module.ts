@@ -1,6 +1,6 @@
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookListComponent } from './book-list/book-list.component';
+import { BookDetailComponent } from './read-books/book-detail/book-detail.component';
+import { BookListComponent } from './read-books/book-list/book-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

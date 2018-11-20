@@ -1,29 +1,31 @@
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap, catchError, map } from 'rxjs/operators';
 import { Book } from './book';
+
+export const searchUrl = 'https://www.googleapis.com/books/v1/volumes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleBooksService {
-  private searchUrl = 'https://www.googleapis.com/books/v1/volumes';
+
   constructor(private http: HttpClient) { }
 
   getBooks(q: string): Observable<Book[]> {
     if (!q) { return of([]); }
-    return this.http.get<any[]>(`${this.searchUrl}?q=${q}&projection=full`)
+    return this.http.get<any[]>(`${searchUrl}?q=${q}&projection=full`)
       .pipe(
-        tap(data => console.log(`fetched data`, data['items'])),
+        // tap(data => console.log(`fetched data`, data['items'])),
         map(data => data['items'].map(item => new Book({id: item.id, ...item.volumeInfo}))),
-        tap(books => console.log(`fetched books`, books)),
+        // tap(books => console.log(`fetched books`, books)),
         catchError(this.handleError(`getBooks`, []))
       );
   }
 
   getBook(id): Observable<Book> {
-     return this.http.get<any>(`${this.searchUrl}/${id}`)
+     return this.http.get<any>(`${searchUrl}/${id}`)
       .pipe(
         tap(data => console.log(`fetched data`, data)),
         map(item => new Book({id: item.id, ...item.volumeInfo})),

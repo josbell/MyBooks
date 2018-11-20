@@ -1,4 +1,4 @@
-import { Book } from './../book';
+import { Book } from './../../core/book';
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
