@@ -5,8 +5,9 @@ import { BookService } from './book.service';
 import { Book } from '../core/book';
 
 describe('BookService', () => {
-  let httpTestingController: HttpTestingController;
+  let httpMock: HttpTestingController;
   let service: BookService;
+  let mockDBService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,12 +15,18 @@ describe('BookService', () => {
       providers: [BookService]
     });
 
-    httpTestingController = TestBed.get(HttpTestingController);
+    httpMock = TestBed.get(HttpTestingController);
     service = TestBed.get(BookService);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it('should be created', inject([BookService], (s: BookService) => {
     expect(s).toBeTruthy();
   }));
+
+
 
 });

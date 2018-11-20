@@ -1,3 +1,4 @@
+import { FirebaseDBService } from './core/firebase-db.service';
 import 'hammerjs';
 import { BookService } from './read-books/book.service';
 import { GoogleBooksService } from './core/google-books.service';
@@ -22,7 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AngularFireModule } from '@angular/fire';
@@ -64,7 +64,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
     AngularFireStorageModule,
     AngularFireAuthModule
   ],
-  providers: [BookService, GoogleBooksService, AngularFireDatabase],
+  providers: [BookService, GoogleBooksService, AngularFireDatabase, FirebaseDBService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
