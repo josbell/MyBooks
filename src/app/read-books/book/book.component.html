@@ -1,10 +1,9 @@
 
-  <mat-card>
-    {{book.title}}
-    <mat-card-actions>
-      <a routerLink="/detail/{{book.id}}">
-        <button mat-button>View Details</button>
-      </a>
-      <button mat-button (click)="onDeleteClick()">Remove</button>
-    </mat-card-actions>
-  </mat-card>
+  <a routerLink="/detail/{{book.id}}">
+    <mat-card>
+      {{book.title}}
+      <mat-card-actions>
+        <button mat-button (click)="onDeleteClick()">Remove</button>
+      </mat-card-actions>
+    </mat-card>
+  </a>
