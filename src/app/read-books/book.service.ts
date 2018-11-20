@@ -15,7 +15,7 @@ export class BookService {
 
   constructor(private db: FirebaseDBService) {
     db.loadBooks().subscribe(
-      books => this.store.next(books)
+      books => this.store.next(books.map(book => Object.assign(book, {})))
     );
   }
 

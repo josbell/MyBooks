@@ -14,4 +14,8 @@ export class Book {
     constructor(obj: Object = {}) {
         _.assign(this, _.pick(obj, _.keys(this)));
     }
+
+    copy(): Book {
+        return _.cloneDeep(this);
+    }
 }

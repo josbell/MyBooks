@@ -51,7 +51,6 @@ describe('GoogleBooksService', () => {
         expect(data[0]).toEqual(jasmine.any(Book));
         expect(data.length).toBe(6);
         data.forEach((item, i) => {
-          console.log(item);
           expect(item.id).toBe(sampleResponse.items[i].id);
           expect(item.title).toBe(sampleResponse.items[i].volumeInfo.title);
         });

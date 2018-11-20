@@ -1,7 +1,6 @@
 import { GoogleBooksService } from './../../core/google-books.service';
 import { BookService } from './../book.service';
 import { Book } from './../../core/book';
-import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -23,15 +22,23 @@ export class BookDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+    this.loadFromList(id);
+    this.handleBooksNotInList(id);
+  }
+
+  loadFromList(id) {
     this.bookService.getLoadedBook(id)
-      .subscribe(book => {
+      .subscribe((book: Book) => {
         if (book) {
-          this.book = book;
+          this.book = book.copy();
           this.inList = true;
         }
       });
+  }
+
+  handleBooksNotInList(id) {
     this.gbService.getBook(id)
-      .subscribe(gbook => this.book = this.inList ? this.book : gbook);
+      .subscribe((gbook: Book) => this.book = this.inList ? this.book : gbook.copy());
   }
 
   add() {

@@ -1,4 +1,3 @@
-import { FirebaseDBService } from './core/firebase-db.service';
 import 'hammerjs';
 import { BookService } from './read-books/book.service';
 import { GoogleBooksService } from './core/google-books.service';
@@ -16,18 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatGridListModule } from '@angular/material/grid-list';
-
+import { AppMaterialModule } from './core/app-material/app-material.module';
+import { FirebaseDBService } from './core/firebase-db.service';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -51,18 +41,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
     NgSelectModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatTabsModule,
-    MatCardModule,
-    MatGridListModule,
-    MatButtonModule,
-    MatListModule,
-    MatIconModule,
-    MatTooltipModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AppMaterialModule
   ],
   providers: [BookService, GoogleBooksService, AngularFireDatabase, FirebaseDBService],
   bootstrap: [AppComponent]
