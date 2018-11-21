@@ -1,14 +1,28 @@
+import { NgSelectModule } from '@ng-select/ng-select';
+import { By } from '@angular/platform-browser';
+import { Book } from './../../core/book';
+import { of } from 'rxjs';
+import { GoogleBooksService } from './../../core/google-books.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { BookSearchComponent } from './book-search.component';
 
-describe('BookSearchComponent', () => {
+fdescribe('BookSearchComponent', () => {
   let component: BookSearchComponent;
   let fixture: ComponentFixture<BookSearchComponent>;
+  let mockRouter, mockGapi;
 
   beforeEach(async(() => {
+    mockRouter = jasmine.createSpyObj(['navigate']);
+    mockGapi = jasmine.createSpyObj(['getBooks']);
     TestBed.configureTestingModule({
-      declarations: [ BookSearchComponent ]
+      declarations: [ BookSearchComponent ],
+      imports: [NgSelectModule],
+      providers: [
+        { provide: GoogleBooksService, useValue: mockGapi},
+        { provide: Router, useValue: mockRouter}
+      ]
     })
     .compileComponents();
   }));
@@ -16,10 +30,16 @@ describe('BookSearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookSearchComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should navigate when user selects book', () => {
+    const book = new Book({ id: '1', title: 'Book 1' });
+    component.onChange(book);
+
+    expect(mockRouter.navigate).toHaveBeenCalled();
   });
 });
