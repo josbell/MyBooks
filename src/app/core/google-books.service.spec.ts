@@ -25,7 +25,7 @@ describe('GoogleBooksService', () => {
     expect(s).toBeTruthy();
   }));
 
-  fdescribe('getBooks', () => {
+  describe('getBooks', () => {
     it('should call get with correct URL', () => {
       const q = 'testString';
       service.getBooks(q).subscribe();
@@ -61,7 +61,7 @@ describe('GoogleBooksService', () => {
     });
   });
 
-  fdescribe('getBook', () => {
+  describe('getBook', () => {
     it('should call get with correct URL', () => {
       const id = 1;
       service.getBook(id).subscribe();

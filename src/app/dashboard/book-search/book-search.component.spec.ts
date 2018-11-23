@@ -1,14 +1,12 @@
 import { NgSelectModule } from '@ng-select/ng-select';
-import { By } from '@angular/platform-browser';
 import { Book } from './../../core/book';
-import { of } from 'rxjs';
 import { GoogleBooksService } from './../../core/google-books.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 
 import { BookSearchComponent } from './book-search.component';
 
-fdescribe('BookSearchComponent', () => {
+describe('BookSearchComponent', () => {
   let component: BookSearchComponent;
   let fixture: ComponentFixture<BookSearchComponent>;
   let mockRouter, mockGapi;

@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { By } from '@angular/platform-browser';
 import { BookComponent } from './../book/book.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -36,6 +37,7 @@ describe('BookListComponent', () => {
         mockBookService.getBooks.and.returnValue(of(BOOKS));
         mockBookService.delete.and.returnValue(of(true));
         TestBed.configureTestingModule({
+            imports: [SharedModule],
             declarations: [
                 BookListComponent,
                 BookComponent,
@@ -53,13 +55,6 @@ describe('BookListComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-
-//     it('should set books correctly from the service', () => {
-//         mockBookService.books.and.returnValue(BOOKS);
-//         fixture.detectChanges();
-
-//         expect(component.books).toEqual(BOOKS);
-//   });
 
     it('should create one li for each book', () => {
         mockBookService.books.and.returnValue(BOOKS);

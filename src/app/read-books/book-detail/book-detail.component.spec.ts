@@ -3,15 +3,14 @@ import { BookService } from './../book.service';
 import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppMaterialModule } from '../../core/app-material/app-material.module';
+import { SharedModule } from '../../shared/shared.module';
 import { BookDetailComponent } from './book-detail.component';
 import { Book } from '../../core/book';
-import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-fdescribe('BookDetailComponent', () => {
+describe('BookDetailComponent', () => {
   let component: BookDetailComponent;
   let fixture: ComponentFixture<BookDetailComponent>;
   let mockActivedRoute, mockBookService, mockLocation, mockGapi;
@@ -26,7 +25,7 @@ fdescribe('BookDetailComponent', () => {
     mockGapi = jasmine.createSpyObj(['getBook']);
     TestBed.configureTestingModule({
       declarations: [ BookDetailComponent ],
-      imports: [FormsModule, AppMaterialModule],
+      imports: [SharedModule],
       providers: [
         { provide: ActivatedRoute, useValue: mockActivedRoute },
         { provide: GoogleBooksService, useValue: mockGapi},
@@ -42,7 +41,7 @@ fdescribe('BookDetailComponent', () => {
     component = fixture.componentInstance;
   });
 
-  fdescribe('ngOnInit()', () => {
+  describe('ngOnInit()', () => {
 
     it('should start with inList as falsy', () => {
       expect(component.inList).toBeFalsy();

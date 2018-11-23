@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
@@ -11,6 +12,7 @@ describe('BookComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [SharedModule],
       declarations: [ BookComponent ],
       schemas: [NO_ERRORS_SCHEMA],
     })

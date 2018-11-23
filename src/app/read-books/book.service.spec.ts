@@ -5,7 +5,7 @@ import { BookService } from './book.service';
 import { Book } from '../core/book';
 import { FirebaseDBService } from './../core/firebase-db.service';
 
-fdescribe('BookService', () => {
+describe('BookService', () => {
   let service: BookService;
   let mockDBService;
   let sampleBooks: Book[] = [];
