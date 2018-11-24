@@ -42,8 +42,12 @@ export class BookDetailComponent implements OnInit {
   }
 
   add() {
+    this.inList = true;
     this.bookService.add(this.book)
-      .then(_ => this.inList = true);
+      .then(
+        fulfilled => this.inList = true,
+        rejected => this.inList = false
+      );
   }
 
   goBack(): void {

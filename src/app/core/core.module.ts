@@ -1,5 +1,3 @@
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -8,12 +6,15 @@ import { AngularFireModule } from '@angular/fire';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { GoogleBooksService } from './google-books.service';
 import { FirebaseDBService } from './firebase-db.service';
 import { environment } from '../../environments/environment';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   imports: [

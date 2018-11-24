@@ -20,7 +20,7 @@ describe('BookDetailComponent', () => {
     mockActivedRoute = {
       snapshot: { paramMap: { get: () => `${bookID}` } }
     };
-    mockBookService = jasmine.createSpyObj(['getLoadedBook', 'updateBook']);
+    mockBookService = jasmine.createSpyObj(['getLoadedBook', 'add']);
     mockLocation = jasmine.createSpyObj(['back']);
     mockGapi = jasmine.createSpyObj(['getBook']);
     TestBed.configureTestingModule({
@@ -91,7 +91,7 @@ describe('BookDetailComponent', () => {
       mockBookService.getLoadedBook.and.returnValue(of({ id: bookID, title: 'Book 1' }));
       mockGapi.getBook.and.returnValue(of(new Book({ id: bookID, title: 'Book 1' })));
       fixture.detectChanges();
-      fixture.debugElement.query(By.css('button.backBtn')).triggerEventHandler('click', null);
+      fixture.debugElement.query(By.css('#goBackBtn')).triggerEventHandler('click', null);
 
       expect(mockLocation.back).toHaveBeenCalled();
     });
@@ -101,10 +101,10 @@ describe('BookDetailComponent', () => {
 
     it('should call bookService.add() with loaded book when addBtn is clicked', () => {
       const book = new Book({ id: bookID, title: 'Book 1' });
-      mockBookService.getLoadedBook.and.returnValue(book);
-      mockGapi.getBook.and.returnValue(book);
+      mockGapi.getBook.and.returnValue(of(book));
+      mockBookService.getLoadedBook.and.returnValue(of(null));
       fixture.detectChanges();
-      fixture.debugElement.query(By.css('button.addBtn')).triggerEventHandler('click', null);
+      fixture.debugElement.query(By.css('#addBtn')).triggerEventHandler('click', null);
 
       expect(mockBookService.add).toHaveBeenCalledWith(book);
       expect(component.inList).toBe(true);
