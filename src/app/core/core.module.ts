@@ -14,7 +14,8 @@ import { GoogleBooksService } from './google-books.service';
 import { FirebaseDBService } from './firebase-db.service';
 import { environment } from '../../environments/environment';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   imports: [
@@ -36,6 +37,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AngularFireModule,
     NavBarComponent
   ],
-  providers: [GoogleBooksService, FirebaseDBService]
+  providers: [
+    GoogleBooksService,
+    FirebaseDBService,
+    AuthService,
+    AuthGuard
+  ]
 })
 export class CoreModule { }

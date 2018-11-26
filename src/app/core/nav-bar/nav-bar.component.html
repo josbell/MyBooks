@@ -3,13 +3,14 @@
   <div fxLayoutAlign="space-between center" class="nav-items">
     <span>{{ title }}</span>
     <span>
-      <button mat-button matTooltip="To Be Implemented">Log In</button>
+      <button *ngIf="!(authService.user$ | async)?.uid" mat-button (click)="authService.login()">Log In</button>
+      <button *ngIf="(authService.user$ | async)?.uid" mat-button (click)="authService.logout()">Log Out</button>
     </span>
   </div>
 </mat-toolbar>
 <div>
   <div fxFlexOffset.gt-sm="15%" fxFlex.gt-sm="70%">
-    <nav mat-tab-nav-bar>
+    <nav *ngIf="(authService.user$ | async)?.uid" mat-tab-nav-bar>
       <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
         [active]="rla.isActive">
         {{link.label}}

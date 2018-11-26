@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +14,7 @@ export class NavBarComponent implements OnInit {
   ];
   activeLink = this.links[0];
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

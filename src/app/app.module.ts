@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ReadBooksModule } from './read-books/read-books.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     CoreModule,
     SharedModule.forRoot(),
     ReadBooksModule,
-    DashboardModule
+    DashboardModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
