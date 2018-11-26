@@ -4,7 +4,7 @@ import { BookListComponent } from './read-books/book-list/book-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/book-list', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: BookDetailComponent },
