@@ -1,3 +1,4 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,10 +14,15 @@ export class BookService implements OnDestroy{
   private store: BehaviorSubject<Book[]> = new BehaviorSubject([]);
   private dbSubscription;
 
-  constructor(private db: FirebaseDBService) {
-    this.dbSubscription = db.loadBooks().subscribe(
-      books => this.store.next(books.map(book => Object.assign(book, {})))
-    );
+  constructor(
+    private db: FirebaseDBService,
+    private afAuth: AngularFireAuth
+    ) {
+    this.afAuth.authState.subscribe(user => {
+      this.dbSubscription = db.loadBooks().subscribe(
+        books => this.store.next(books.map(book => Object.assign(book, {})))
+      );
+    });
   }
 
   ngOnDestroy(): void {
@@ -32,7 +38,4 @@ export class BookService implements OnDestroy{
   delete = (key: string) => this.db.deleteBook(key);
 
   getLoadedBook = (id): Observable<Book> => this.books.pipe(map(bks => bks.find(b => b.id === id)));
-
-
-
 }

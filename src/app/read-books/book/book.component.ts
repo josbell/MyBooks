@@ -13,10 +13,10 @@ export class BookComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onDeleteClick(): void {
+
     this.delete.emit('');
   }
 

@@ -1,9 +1,10 @@
 
-  <a routerLink="/detail/{{book.id}}">
+    
     <mat-card>
       {{book.title}}
       <mat-card-actions>
-        <button id="deleteBtn" mat-button (click)="onDeleteClick()">Remove</button>
+        <a class="card-link" routerLink="/detail/{{book.id}}"><button id="deleteBtn" mat-button>View</button></a>
+        <button id="deleteBtn" mat-button (click)="onDeleteClick();$event.stopPropagation()">Remove</button>
       </mat-card-actions>
     </mat-card>
-  </a>
+  

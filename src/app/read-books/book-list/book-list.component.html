@@ -1,4 +1,4 @@
-<div class="container" fxLayout="column" fxLayoutAlign="space-around stretch" >
+<div class="container" fxLayout="column" fxLayoutAlign="space-around stretch" fxFlexOffset.gt-sm="15%" fxFlex.gt-sm="70%" >
   <ul class="books">
     <li *ngFor="let book of bookService.books | async">
       <app-book (delete)='delete(book)' [book]='book'></app-book>
