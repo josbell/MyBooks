@@ -1,11 +1,13 @@
-.container {
-    height: 30em;
+/* small-default */
+
+.container.main {
+    height: 150vh;
 }
 .parallax {
     /* The image used */
     background-image: url('../../assets/img/white-book.jpg');
     /* Full height */
-    height: 100%;
+    height: 60%;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -14,34 +16,22 @@
     z-index: 0;
 }
 
-#fixedText h2 {
-    font-size:4vw;
-    position:fixed;
-    left:10vw;
-    top: 20vw;
-    z-index: 1;
+#bannerContent {
+    text-align: center;
 }
 
-.middle {
-    height:100vw;
+.container.middle {
     color: whitesmoke;
     background-color:#673ab7;
     z-index: 2;
-    position: relative;
-    text-align:center
+    padding: 5%;
 }
 
 #middleText {
     z-index: 2;
-    padding: 0 2vw 2vw 0;
-}
-
-#middleText h2, p {
-    font-size:4vw;
-    text-align: right;
+    text-align: center;
 }
 
 .middle img {
-    height: 20vw;
     z-index: 2;
 }
